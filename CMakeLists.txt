@@ -8,5 +8,5 @@ set(LIBRARIES
         gtest
         pthread)
 
-add_executable(Task0 Box.cpp Container.cpp Box.h Container.h Tests.cpp)
+add_executable(Task0 Box.cpp Container.cpp Box.h Container.h Tests.cpp main.cpp)
 target_link_libraries(Task0 ${LIBRARIES})

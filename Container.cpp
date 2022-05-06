@@ -17,18 +17,20 @@ Container::Container(const vector<Box>& array, int length, int width, int height
     this -> maxWeight = maxWeight;
 }
 
-// 11.1 Добавление коробки в контейнер (по индексу)
-void Container::appendBoxInContainer(int i, Box box)
+// 11.1 Добавление коробки в контейнер
+int Container::appendBoxInContainer(Box box)
 {
     double sum = 0;
     for (auto & j : array)
         sum += j.getWeight();
 
-    auto iter1 = array.cbegin();
+    auto iter = array.cbegin();
     if ((sum + box.getWeight()) > maxWeight)
         throw MyException("Too much weight");
 
-    array.insert(iter1 + i, box);
+    int i = box.nest;
+    array.insert(iter + i, box);
+    return i;
 }
 
 // 11.2 Удаление коробки из контейнера (по индексу)
@@ -62,7 +64,10 @@ int Container::totalValueInContainer()
 }
 
 // 11.6 Получение коробки по индексу
-Box& Container::returnBoxByIndex(int i) { return array[i]; }
+const Box& Container::returnBoxByIndex(int i)
+{
+    return array[i];
+}
 
 // 12. Операторы ввода/вывода
 istream& Containers::operator >> (istream& in, Container& container)
@@ -79,10 +84,9 @@ istream& Containers::operator >> (istream& in, Container& container)
 
 ostream& Containers::operator << (ostream& out, Container& container)
 {
-    out << "Container(" << container.length << ", " << container.width << ", " << container.height << ", " << container.maxWeight << ", ";
+    out << "Container(" << container.length << ", " << container.width << ", " << container.height << ", " << container.maxWeight << "):\n";
     for (auto & i : container.array)
-        out << i << ", ";
-    out << ")";
+        out << i << "\n";
 
     return out;
 }

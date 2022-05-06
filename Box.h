@@ -11,8 +11,9 @@ namespace Boxes
         int height;
         double weight;
         int value;
+        int nest;
 
-        Box(int length, int width, int height, double weight, int value);
+        Box(int length, int width, int height, double weight, int value, int nest);
         [[nodiscard]] int getLength() const;
         [[nodiscard]] int getWidth() const;
         [[nodiscard]] int getHeight() const;
@@ -33,7 +34,7 @@ namespace Boxes
         static bool boxInBox(Box boxes[], int size);
     };
 
-    bool operator == (Box& boxes1, Box& boxes2);
+    bool operator == (const Box& boxes1, const Box& boxes2);
     istream& operator >> (istream& in, Box& box);
     ostream& operator << (ostream& out, Box& box);
 }

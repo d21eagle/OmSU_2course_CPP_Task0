@@ -15,7 +15,7 @@ namespace Containers
 
         Container(const vector<Box>& array, int length, int width, int height, int maxWeight);
 
-        void appendBoxInContainer(int i, Box box);
+        int appendBoxInContainer(Box box);
 
         void deleteBoxInContainer(int i);
 
@@ -26,7 +26,7 @@ namespace Containers
 
         int totalValueInContainer();
 
-        Box& returnBoxByIndex(int i);
+        const Box& returnBoxByIndex(int i);
 
         Box& operator[] (int index);
     };

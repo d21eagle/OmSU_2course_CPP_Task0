@@ -2,13 +2,14 @@
 using namespace Boxes;
 
 // 1. Конструктор по значениям полей
-Box::Box(int length, int width, int height, double weight, int value)
+Box::Box(int length, int width, int height, double weight, int value, int nest)
 {
     this -> length = length;
     this -> width = width;
     this -> height = height;
     this -> weight = weight;
     this -> value = value;
+    this -> nest = nest;
 }
 
 int Box::getLength() const { return length; }
@@ -70,40 +71,24 @@ double Box::maxWeight(Box boxes[], int size, int maxV)
 // 5. Функция проверяет, что все коробки массива можно вложить друг в друга по одной штуке
 bool Box::boxInBox(Box boxes[], int size)
 {
-    int l = 0;
-    int b = 0;
-    float k = (float(1 + (size - 1)) / 2) * float(size - 1);
+    int packed = 0;
 
     for (int i = 0; i < size; i++)
     {
         for (int j = 0; j < size; j++)
         {
-            if ((boxes[i].getHeight() * boxes[i].getLength() * boxes[i].getWidth() <
-                boxes[j].getWidth() * boxes[j].getLength() * boxes[j].getHeight()))
-                b++;
+            if ((boxes[i].getHeight() < boxes[j].getHeight()
+                 && boxes[i].getWidth() < boxes[j].getWidth()
+                 && boxes[i].getLength() < boxes[j].getLength()))
+                packed++;
         }
     }
-
-    if (int(k) == b)
-    {
-        for (int i = 0; i < size; i++)
-        {
-            for (int j = 0; j < size; j++)
-            {
-                if ((boxes[i].getHeight() < boxes[j].getHeight()
-                    && boxes[i].getWidth() < boxes[j].getWidth()
-                    && boxes[i].getLength() < boxes[j].getLength()))
-                    l++;
-            }
-        }
-        if (int(k) != l) return false;
-        return true;
-    }
-    else return false;
+    if (size != packed) return false;
+    return true;
 }
 
 // 6. Оператор == сравнения двух коробок на равенство всех параметров
-bool Boxes::operator == (Box& box1, Box& box2)
+bool Boxes::operator == (const Box& box1, const Box& box2)
 {
     return ((box1.getLength() == box2.getLength())
         && (box1.getWidth() == box2.getWidth())
@@ -115,9 +100,9 @@ bool Boxes::operator == (Box& box1, Box& box2)
 // 7. Операторы ввода/вывода (>> и <<) для коробок в произвольные потоки
 istream& Boxes::operator >> (istream& in, Box& box)
 {
-    in >> box.height;
-    in >> box.width;
     in >> box.length;
+    in >> box.width;
+    in >> box.height;
     in >> box.weight;
     in >> box.value;
     return in;
