@@ -72,10 +72,11 @@ const Box& Container::returnBoxByIndex(int i)
 // 12. Операторы ввода/вывода
 istream& Containers::operator >> (istream& in, Container& container)
 {
-    in >> container.height;
-    in >> container.width;
     in >> container.length;
+    in >> container.width;
+    in >> container.height;
     in >> container.maxWeight;
+
     for (auto & i : container.array)
         in >> i;
 

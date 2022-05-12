@@ -94,6 +94,7 @@ TEST (test, appendBoxInContainer)
         Box box1 = Box(1, 2, 3, 5.0, 30, 0);
         Box box2 = Box(4, 5, 6, 6.0, 40, 1);
         Box box3 = Box(7, 8, 9, 7.0, 50, 2);
+
         box_arr.push_back(box1);
         box_arr.push_back(box2);
         box_arr.push_back(box3);

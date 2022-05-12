@@ -19,6 +19,7 @@ namespace Boxes
         [[nodiscard]] int getHeight() const;
         [[nodiscard]] double getWeight() const;
         [[nodiscard]] int getValue() const;
+        [[nodiscard]] int getNest() const;
         void setLength(int length);
         void setWidth(int width);
         void setHeight(int height);

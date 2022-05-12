@@ -8,14 +8,14 @@ using namespace Containers;
 int main() {
 
     std::cout << "Enter box parameters: " << endl;
-    Box box1(0, 0, 0, 0, 0);
+    Box box1(0, 0, 0, 0, 0, 0);
     std::cin >> box1;
     std::cout << box1;
     std::cout << endl << endl;
 
     vector<Box> box_arr;
-    Box box10 = Box(0, 0, 0, 0.0, 0);
-    Box box20 = Box(0, 0, 0, 0.0, 0);
+    Box box10 = Box(0, 0, 0, 0.0, 0, 0);
+    Box box20 = Box(0, 0, 0, 0.0, 0, 0);
     box_arr.push_back(box10);
     box_arr.push_back(box20);
 
@@ -24,4 +24,4 @@ int main() {
     std::cin >> cont1;
     std::cout << cont1;
 }
- */
+*/

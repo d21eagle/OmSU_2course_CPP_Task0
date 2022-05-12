@@ -41,4 +41,5 @@ namespace Containers
         explicit MyException(string error) : m_error(std::move(error)) {}
         [[nodiscard]] const char* what() const noexcept override { return m_error.c_str(); }
     };
+
 }

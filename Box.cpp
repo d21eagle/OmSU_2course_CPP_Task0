@@ -22,6 +22,8 @@ double Box::getWeight() const { return weight; }
 
 int Box::getValue() const { return value; }
 
+int Box::getNest() const { return nest; }
+
 void Box::setLength(int len) { this -> length = len; }
 
 void Box::setWidth(int wid) { this -> width = wid; }
@@ -105,13 +107,14 @@ istream& Boxes::operator >> (istream& in, Box& box)
     in >> box.height;
     in >> box.weight;
     in >> box.value;
+    in >> box.nest;
     return in;
 }
 
 ostream& Boxes::operator << (ostream& out, Box& box)
 {
     out << "Box(" << box.getLength() << ", " << box.getWidth() << ", "
-        << box.getHeight() << ", " << box.getWeight() << ", " << box.getValue() << ")";
+        << box.getHeight() << ", " << box.getWeight() << ", " << box.getValue() << ", " << box.getNest() << ")";
     return out;
 }
 
