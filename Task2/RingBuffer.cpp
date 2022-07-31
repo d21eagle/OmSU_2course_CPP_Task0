@@ -22,17 +22,18 @@ RingBuffer<T>::RingBuffer(size_t size1) //: size(size1 + 1), array1(new T[size1+
 
 template <typename T>
 RingBuffer<T>::RingBuffer(const RingBuffer& copy) : size(copy.size), first(copy.first), last(copy.last), array1(new T[copy.size])
-{}
+{
+}
 
 // Добавить элемент в конец очереди (при переполнении – исключение)
 template <typename T>
 void RingBuffer<T>::addElemInEnd(T elem)
 {
     if (last == size) size++;
-    if ((last + 1) % (this -> size) == first)
+    if ((last + 1) % this -> size == first)
         throw MyException("Overflow");
-    array1[last] = elem;
 
+    array1[last] = elem;
     last = (last + 1) % size;
 }
 
@@ -45,6 +46,7 @@ double RingBuffer<T>::getElemInStart()
     double temp = array1[first];
     first = (first + 1) % size;
     size--;
+
     return temp;
 }
 
@@ -76,7 +78,6 @@ void RingBuffer<T>::clearBuffer()
 {
     first = 0;
     last = 0;
-
     std::cout << "Очередь была очищена!" << std::endl;
 }
 

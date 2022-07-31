@@ -4,8 +4,8 @@
 template <typename T> class RingBuffer;
 
 template <typename T>
-class Iterator
-{
+class Iterator {
+
 private:
     int index;
     RingBuffer<T> *queue;

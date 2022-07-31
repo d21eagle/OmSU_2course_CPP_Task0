@@ -2,7 +2,9 @@
 
 // Конструктор, который привязывает итератор к очереди
 template <typename T>
-Iterator<T>::Iterator(RingBuffer<T>& que) : index(que.first), queue(&que){}
+Iterator<T>::Iterator(RingBuffer<T>& que) : index(que.first), queue(&que)
+{
+}
 
 // Начать перебор элементов
 template <typename T>

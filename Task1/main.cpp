@@ -1,16 +1,118 @@
-
-// С++ Блок 1 Доп
-
-#include "Vector.h"
+#include "DynamicIntArray.h"
 #include <iostream>
 using namespace std;
 
 int main()
 {
-    Vector v = { 1, -25, 2 };
-    v.push_back(-5);
-    std::cout << v << v.getSize() << " " << v.capacity();
-    v.pop_back();
-    v.pop_back();
-    std::cout << v;
+    system("chcp 65001");
+
+    // Работа конструктора по умолчанию
+    DynamicIntArray dArr1 = DynamicIntArray();
+    cout << dArr1;
+    cout << endl;
+
+    // Работа конструктора по размеру
+    DynamicIntArray dArr2 = DynamicIntArray(5);
+    cout << dArr2;
+    cout << endl;
+
+    // Работа конструктора по размеру и числу
+    DynamicIntArray dArr3 = DynamicIntArray(10, 5);
+
+    // Работа конструкторов копирования
+    DynamicIntArray dArr4 = DynamicIntArray(dArr3);
+    cout << dArr4;
+    cout << endl;
+
+    // Изменение размера
+    dArr4.newSize(4);
+    cout << dArr4;
+    cout << endl;
+
+    // Присваивание массивов
+    dArr1 = dArr4;
+    cout << dArr1;
+    cout << endl;
+    cout << dArr4;
+    cout << endl;
+
+    // Конкатенация массивов
+    DynamicIntArray dArr7(5, 2);
+    DynamicIntArray dArr8(6, 3);
+    DynamicIntArray dArr9 = DynamicIntArray();
+    dArr9 = dArr7 + dArr8;
+    cout << "Конкатенация массивов: " << endl;
+    cout << dArr9;
+    cout << "\n" << endl;
+
+    // Сравнение массивов
+    DynamicIntArray dArr11 = DynamicIntArray(2, 1);
+    DynamicIntArray dArr12 = DynamicIntArray(7, 1);
+    cout << "Сравнение массивов: " << endl;
+
+    bool exp1 = dArr11 == dArr12;
+    cout << "dArr11(2, 1) == dArr12(7, 1)?: ";
+    cout << exp1 << endl;
+
+    bool exp2 = dArr11 != dArr12;
+    cout << "dArr11(2, 1) != dArr12(7, 1)?: ";
+    cout << exp2 << endl;
+
+    bool exp3 = dArr11 > dArr12;
+    cout << "dArr11(2, 1) > dArr12(7, 1)?: ";
+    cout << exp3 << endl;
+
+    bool exp4 = dArr11 >= dArr12;
+    cout << "dArr11(2, 1) >= dArr12(7, 1)?: ";
+    cout << exp4 << endl;
+
+    bool exp5 = dArr11 < dArr12;
+    cout << "dArr11(2, 1) < dArr12(7, 1)?: ";
+    cout << exp5 << endl;
+
+    bool exp6 = dArr11 <= dArr12;
+    cout << "dArr11(2, 1) <= dArr12(7, 1)?: ";
+    cout << exp6 << endl;
+    cout << endl;
+
+    // Доступ к элементу
+    DynamicIntArray dArr121 = DynamicIntArray(7, 2);
+    int elem = dArr121[0];
+    cout << "Нулевой элемент массива: ";
+    cout << elem << endl;
+
+    // Проверка изменения
+    DynamicIntArray dArr122 = DynamicIntArray(4, 2);
+    dArr122[0] = 1;
+    dArr122[1] = 2;
+    dArr122[2] = 3;
+    dArr122[3] = 4;
+    cout << dArr122;
+    cout << "\n" << endl;
+
+    // Перемещающее присваивание
+    cout << "Перемещающее присваивание: " << endl;
+    DynamicIntArray dArr16 = DynamicIntArray(5, 8);
+    DynamicIntArray dArr19 = DynamicIntArray(5, 7);
+    DynamicIntArray dArr17 = DynamicIntArray(dArr16);
+    dArr17 = DynamicIntArray(dArr19);
+    cout << dArr17;
+    cout << "\n" << endl;
+
+    // Конструктор перемещения
+    cout << "Работа конструктора перемещения: " << endl;
+    DynamicIntArray dArr14 = DynamicIntArray(7, 2);
+    DynamicIntArray dArr15 = DynamicIntArray(7, 3);
+    DynamicIntArray dArr18 = DynamicIntArray(dArr14);
+    DynamicIntArray dArr20 = DynamicIntArray(dArr14 + dArr15);
+
+    cout << dArr20 << endl;
+    cout << endl;
+
+    // Ввод/Вывод массивов
+    DynamicIntArray dArr10 = DynamicIntArray(5);
+    cout << "Введите элементы массива: " << endl;
+    cin >> dArr10;
+    cout << dArr10;
+    cout << "\n" << endl;
 }

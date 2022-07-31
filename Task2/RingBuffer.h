@@ -6,8 +6,8 @@ using namespace std;
 template <typename T> class Iterator;
 
 template <typename T>
-class RingBuffer
-{
+class RingBuffer {
+
 private:
     T* array1;
     size_t size;
